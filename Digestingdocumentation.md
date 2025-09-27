@@ -85,6 +85,7 @@ No reference was used for this challenge.
 
 ## 3. READING MANUALS :
 
+
 We have to first invoke the manpage for a certain command line which when printed will help printing the flag.
 
 ## MY SOLUTION:
@@ -95,9 +96,10 @@ We have to first invoke the manpage for a certain command line which when printe
 pwn.college{01LVHnqcWDOQLcm4SBEDZj7730N.QX0EDO0wCMxEzNzEzW}
 
 ```
-
-
 Firstly, we had to print ``` man challenge ``` and then read through the description. I then found out that --nqccmj 014 is used to the print the flag if the NUM is 014.
+
+
+
 
 
 ````
@@ -112,6 +114,40 @@ Correct usage! Your flag: pwn.college{01LVHnqcWDOQLcm4SBEDZj7730N.QX0EDO0wCMxEzN
 ## What I learnt
 I learnt about the man command which is the shortform of manual and as the name suggests, man command is used to check the manual of a particular command and then we can read about the command.
 
+## References 
+No reference was used for this challenge.
+
+
+## 4. SEARCHING MANUALS :
+
+In this challenge we have to search the manual to find the flag with different options in manual page such as arrow keys (and PgUp/PgDn) and search with /. we can also use n to go to the next result and N to go to the previous result.
+
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{YcQ7kRPYgB_VlZchkSblAtJ2Xfw.QX1EDO0wCMxEzNzEzW}
+
+```
+So we had to first invoke the man challenge which opened a long documentation, there I could identify that printing --ntu (found out by searching through '/') will help in giving me the flag
+
+
+
+````
+hacker@man~searching-manuals:~$ man challenge
+hacker@man~searching-manuals:~$ 
+hacker@man~searching-manuals:~$ /challenge/challenge --ntu
+Initializing...
+Correct usage! Your flag: pwn.college{YcQ7kRPYgB_VlZchkSblAtJ2Xfw.QX1EDO0wCMxEzNzEzW}
+
+
+````
+
+
+## What I learnt
+I learnt how we can go up and down in a manual and also use / to search within the documentation.
 ## References 
 No reference was used for this challenge.
 
