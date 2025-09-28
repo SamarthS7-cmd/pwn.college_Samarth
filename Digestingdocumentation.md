@@ -151,3 +151,38 @@ I learnt how we can go up and down in a manual and also use / to search within t
 ## References 
 No reference was used for this challenge.
 
+
+## 5. SEARCHING FOR MANUALS :
+
+In this challenge the manpage for the challenge is hidden by randomizing its name.we have to use the hints to find the flag. HINT 1: man man teaches you advanced usage of the man command itself, and you must use this knowledge to figure out how to search for the hidden manpage that will tell you how to use /challenge/challenge. HINT 2: though the manpage is randomly named, you still actually use /challenge/challenge to get the flag!
+
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{oq1StzejEkkxnOoPdGUgP1aC9QR.QX2EDO0wCMxEzNzEzW}
+
+```
+So first I invoked man man which gave me a long manual there I could see that -k argument can be used for searching keywords. I did man -k challenge and then it gave me the next step to be done which is invoking man oqtzejkkxn, now this further laid out another hint of using --oqtzej NUM if the NUM is 119.
+
+
+````
+hacker@man~searching-for-manuals:~$ man man
+hacker@man~searching-for-manuals:~$ 
+hacker@man~searching-for-manuals:~$ man -k challenge
+oqtzejkkxn (1)       - print the flag!
+hacker@man~searching-for-manuals:~$ man oqtzejkkxn
+hacker@man~searching-for-manuals:~$ 
+hacker@man~searching-for-manuals:~$ /challenge/challenge --oqtzej 119
+Correct usage! Your flag: pwn.college{oq1StzejEkkxnOoPdGUgP1aC9QR.QX2EDO0wCMxEzNzEzW}
+
+
+````
+
+
+## What I learnt
+I learnt that man command also has a man page for its different arguments.I also learnt that -k argument is used to search.
+## References 
+No reference was used for this challenge.
