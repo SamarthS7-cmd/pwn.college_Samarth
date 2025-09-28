@@ -186,3 +186,93 @@ Correct usage! Your flag: pwn.college{oq1StzejEkkxnOoPdGUgP1aC9QR.QX2EDO0wCMxEzN
 I learnt that man command also has a man page for its different arguments.I also learnt that -k argument is used to search.
 ## References 
 No reference was used for this challenge.
+
+## 6. HELPFUL PROGRAMS:
+
+In this challenge, we will practice reading a program's documentation with --help. 
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{QcghuBC9iH6lpfzIhzd20SEAtZf.QX3IDO0wCMxEzNzEzW}
+
+```
+
+This was a simple challenge we where we had to first invoke the --help argument, this can also be shortened to -h. This printed the optional arguments out of which
+-g was the one which will give the flag if given the correct value and -p will print that value. So I first invoked the value by writing /challenge/challenge -p and then got the flag through -g.
+
+
+
+
+````
+hacker@man~helpful-programs:~$ /challenge/challenge -h
+usage: a challenge to make you ask for help [-h] [--fortune] [-v] [-g GIVE_THE_FLAG] [-p]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --fortune             read your fortune
+  -v, --version         get the version number
+  -g GIVE_THE_FLAG, --give-the-flag GIVE_THE_FLAG
+                        get the flag, if given the correct value
+  -p, --print-value     print the value that will cause the -g option to give you the flag
+hacker@man~helpful-programs:~$ /challenge/challenge -p
+The secret value is: 962
+hacker@man~helpful-programs:~$ /challenge/challenge -g 962
+Correct usage! Your flag: pwn.college{QcghuBC9iH6lpfzIhzd20SEAtZf.QX3IDO0wCMxEzNzEzW}
+
+
+
+````
+
+
+## What I learnt
+I learnt that some programs dont have a man page but can be run if invoked with a special argument called -help.
+## References 
+No reference was used for this challenge.
+
+## 7. HELP FOR BUILTINS:
+
+In this challenge, we'll practice using help to look up help for builtins. This challenge's challenge command is a shell builtin, rather than a program. Like before, we need to lookup its help to figure out the secret value to pass to it
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{Mrq4EcytzpUwqJbxuWSPvOIIGBy.QX0ETO0wCMxEzNzEzW}
+
+```
+
+As the challenge suggests, we have to use the builtin help as the challenge command is also a shell buitin.Therefore, we get the secret value.
+Then we had to invoke the --secret value which is --secret Mrq4Ecyt.
+
+
+
+
+````
+hacker@man~help-for-builtins:~$ help challenge
+challenge: challenge [--fortune] [--version] [--secret SECRET]
+    This builtin command will read you the flag, given the right arguments!
+    
+    Options:
+      --fortune         display a fortune
+      --version         display the version
+      --secret VALUE    prints the flag, if VALUE is correct
+
+    You must be sure to provide the right value to --secret. That value
+    is "Mrq4Ecyt".
+hacker@man~help-for-builtins:~$ challenge --secret Mrq4Ecyt
+Correct! Here is your flag!
+pwn.college{Mrq4EcytzpUwqJbxuWSPvOIIGBy.QX0ETO0wCMxEzNzEzW}
+
+
+
+````
+
+
+## What I learnt
+I learnt that some commands, rather than being programs with man pages and help options, are built into the shell itself. These are called builtins. Builtins are invoked just like commands, but the shell handles them internally instead of launching other programs. We can get a list of shell builtins by running the builtin help.
+## References 
+No reference was used for this challenge.
