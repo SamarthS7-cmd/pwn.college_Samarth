@@ -194,39 +194,6 @@ This challenge solely focused on applying all the concepts we have learned befor
 No reference was used for this challenge.
 
 
-## 5. MULTIPLE GLOBS :
-
-
-In this challenge, we have to first cd into /challenge/files and run /challenge/run, providing a single argument: a short (3 characters or less) globbed word with two * globs in it that covers every word that contains the letter p.
-
-## MY SOLUTION:
-
-**Flag** :
-
-```
-pwn.college{4qtUAijSpdp-aqu28d0b0bTCnHO.0lM3kjNxwCMxEzNzEzW}
-```
-
-As mentioned in the challenge, I first changed the directory to  /challenge/files then I wrote /challenge/run *p* which satisified the condition of 3 globbed words containin
-
-````
-hacker@globbing~multiple-globs:~$ cd /challenge/files
-hacker@globbing~multiple-globs:/challenge/files$ ls
-amazing    challenging  educational  great  incredible  kind      magical  optimistic  queenly  splendid   uplifting   wonderful  youthful
-beautiful  delightful   fantastic    happy  jovial      laughing  nice     pwning      radiant  thrilling  victorious  xenial     zesty
-hacker@globbing~multiple-globs:/challenge/files$ /challenge/run *p*
-You got it! Here is your flag!
-pwn.college{4qtUAijSpdp-aqu28d0b0bTCnHO.0lM3kjNxwCMxEzNzEzW}
-
-````
-
-
-## What I learnt
-I was able to learn about the [] glob, globbing happens on a path basis, so you can expand entire paths with your globbed arguments. 
-
-## References 
-No reference was used for this challenge.
-
 
 ## 7. EXCLUSIONARY GLOBS :
 
