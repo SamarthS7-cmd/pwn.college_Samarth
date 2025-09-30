@@ -288,3 +288,244 @@ Through this challenge, I learnt about the pipe command and how we can use grep 
 
 ## References 
 No reference was used for this challenge.
+
+
+# 8. GREPPING ERRORS:
+
+
+In this challenge we need to redirect standard error to standard output (2>& 1) and then pipe the now-combined stderr and stdout as normal.
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{cu2QTnSXzHvpUguuzS-Ukods4Sh.QX1ATO0wCMxEzNzEzW}
+```
+As directed, I used /challenge/run 2>&1 to redirect standard error to standard output. Then I used pipe command to grep and got the flag.
+
+````
+hacker@piping~grepping-errors:~$ /challenge/run 2>&1 | grep pwn.college
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge checks for a specific process at the other end of stderr : grep
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stderr to another process. Checking...
+[TEST] Performing checks on that process!
+
+[INFO] The process' executable is /nix/store/8b4vn1iyn6kqiisjvlmv67d1c0p3j6wj-gnugrep-3.11/bin/grep.
+[INFO] This might be different than expected because of symbolic links (for example, from /usr/bin/python to /usr/bin/python3 to /usr/bin/python3.8).
+[INFO] To pass the checks, the executable must be grep.
+
+[PASS] You have passed the checks on the process on the other end of my stderr!
+[PASS] Success! You have satisfied all execution requirements.
+pwn.college{cu2QTnSXzHvpUguuzS-Ukods4Sh.QX1ATO0wCMxEzNzEzW}
+````
+
+
+## What I learnt
+Through this challenge, I learnt about >& operator which redirects a file descriptor to another file descriptor.
+
+## References 
+No reference was used for this challenge.
+
+
+# 9. FILTERING WITH GREP-V:
+
+
+In this challenge we need to use grep -v to filter out all the lines containing "DECOY" and get the flag.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+```
+An easy challenge where we had to just -v function.
+
+````
+hacker@piping~filtering-with-grep-v:~$ /challenge/run | grep -v DECOY
+pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+````
+
+
+## What I learnt
+Through this challenge, I learnt about -v which is used when we want to show lines that do not match a pattern.
+
+## References 
+No reference was used for this challenge.
+
+
+# 10. DUPLICATING FILE DATA WITH TEE:
+
+
+In this challenge /challenge/pwn must be piped into /challenge/college, but we'll need to intercept the data to see what pwn needs from us.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+```
+An easy challenge where we had to just -v function.
+
+````
+hacker@piping~filtering-with-grep-v:~$ /challenge/run | grep -v DECOY
+pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+````
+
+
+## What I learnt
+Through this challenge, I learnt about -v which is used when we want to show lines that do not match a pattern.
+
+## References 
+No reference was used for this challenge.
+
+
+# 11. PROCESS SUBSTITUTION FOR INPUT:
+
+
+In this challenge we need to use process substitution with diff to compare the outputs of /challenge/print_decoys and /challenge/print_decoys_and_flag
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+```
+It was an easy challenge where we had to use diff function.
+
+````
+hacker@piping~process-substitution-for-input:~$ diff <(/challenge/print_decoys) <(/challenge/print_decoys_and_flag)
+29a30
+> pwn.college{8AWG50yKF-Gv57DKdygYMzNWCQB.0lNwMDOxwCMxEzNzEzW}
+````
+
+
+## What I learnt
+Through this challenge, I could first understand that Linux follows the philosophy of classifying everything as a file. Then I learnt about process substitution for hooking input and output of programs to arguments of commands. 
+## References 
+No reference was used for this challenge.
+
+# 12. WRITING TO MULTIPLE PROGRAMS:
+
+
+In this challenge we need to run the /challenge/hack command, and duplicate its output as input to both the /challenge/the and the /challenge/planet commands.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{UukGJqX-uYIdXl5wgQ3YJChv2eK.QXwgDN1wCMxEzNzEzW}
+```
+I used tee command to duplicate the output of /challenge/hack as input to /challenge/the and /challenge/planet.
+
+````
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack | tee >(/challenge/the) >(/challenge/planet)
+This secret data must directly and simultaneously make it to /challenge/the and 
+/challenge/planet. Don't try to copy-paste it; it changes too fast.
+21997241411568229068
+Congratulations, you have duplicated data into the input of two programs! Here 
+is your flag:
+pwn.college{UukGJqX-uYIdXl5wgQ3YJChv2eK.QXwgDN1wCMxEzNzEzW}
+hacker@piping~writing-to-multiple-programs:~$ ^C
+Congratulations, you have duplicated data into the input of two programs! Here 
+is your flag:
+pwn.college{UukGJqX-uYIdXl5wgQ3YJChv2eK.QXwgDN1wCMxEzNzEzW}
+````
+
+
+## What I learnt
+Through this challenge, I could understand tee and pipe command in a more better way.
+
+## References 
+No reference was used for this challenge.
+
+# 13. SPLIT PIPING stderr and stdout:
+
+
+In this challenge we have:
+/challenge/hack: this produces data on stdout and stderr
+/challenge/the: you must redirect hack's stderr to this program
+/challenge/planet: you must redirect hack's stdout to this program
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{YgIhQJv3L1cDKsljPhwEVvBfG0w.QXxQDM2wCMxEzNzEzW}
+```
+To redirect stderr of /challenge/hack to /challenge/the, I used >(/challenge/the) and to redirect stdout of /challenge/hack to /challenge/planet stdout I used the pipe command.
+
+````
+hacker@piping~split-piping-stderr-and-stdout:~$ /challenge/hack 2> >(/challenge/the) | /challenge/planet
+Congratulations, you have learned a redirection technique that even experts 
+struggle with! Here is your flag:
+pwn.college{YgIhQJv3L1cDKsljPhwEVvBfG0w.QXxQDM2wCMxEzNzEzW}
+hacker@piping~split-piping-stderr-and-stdout:~$ ^C
+Congratulations, you have learned a redirection technique that even experts 
+struggle with! Here is your flag:
+pwn.college{YgIhQJv3L1cDKsljPhwEVvBfG0w.QXxQDM2wCMxEzNzEzW}
+````
+
+
+## What I learnt
+This challenge was an amalgamation of previous concepts we learnt.
+
+## References 
+No reference was used for this challenge.
+
+# 14. NAMED PIPES:
+
+
+In this challenge we have:
+/challenge/hack: this produces data on stdout and stderr
+/challenge/the: you must redirect hack's stderr to this program
+/challenge/planet: you must redirect hack's stdout to this program
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{cH_kVX0aL5Hh-leIQHU0ZHvzGWB.01MzMDOxwiM1kjNzEzW}
+
+```
+As given in the problem statement I first created a fifo file using mkfifo then I redirected the output of /challenge/run to /tmp/flag_fifo.
+````
+hacker@piping~named-pipes:~$ mkfifo /tmp/flag_fifo
+hacker@piping~named-pipes:~$ /challenge/run > /tmp/flag_fifo
+You're successfully redirecting /challenge/run to a FIFO at /tmp/flag_fifo!
+Bash will now try to open the FIFO for writing, to pass it as the stdout of
+/challenge/run. Recall that operations on FIFOs will *block* until both the
+read side and the write side is open, so /challenge/run will not actually be
+launched until you start reading from the FIFO!
+hacker@piping~named-pipes:~$
+
+
+terminal 2
+
+
+hacker@piping~named-pipes:~$ cat /tmp/flag_fifo
+You've correctly redirected /challenge/run's stdout to a FIFO at
+/tmp/flag_fifo! Here is your flag:
+pwn.college{cH_kVX0aL5Hh-leIQHU0ZHvzGWB.01MzMDOxwiM1kjNzEzW}
+
+````
+
+
+## What I learnt
+Through this challenge, I learnt about FIFO which stands for First In First Out. they are named pipes and are useful for facilitating complex data flows, merging and splitting data in flexible ways
+
+## References 
+No reference was used for this challenge.
+
