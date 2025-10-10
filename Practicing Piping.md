@@ -497,29 +497,28 @@ In this challenge we have:
 **Flag** :
 
 ```
-pwn.college{cH_kVX0aL5Hh-leIQHU0ZHvzGWB.01MzMDOxwiM1kjNzEzW}
+pwn.college{gami27lwEKqoxeE92E1u_Kx8X_2.01MzMDOxwCMxEzNzEzW}
 
 ```
-As given in the problem statement I first created a fifo file using mkfifo then I redirected the output of /challenge/run to /tmp/flag_fifo.
+So first I created a fifo file using mkfifo then I redirected the output of /challenge/run to /tmp/flag_fifo. In the other terminal I wrote cat /tmp/flag_fifo to get the flag.
+
 ````
 hacker@piping~named-pipes:~$ mkfifo /tmp/flag_fifo
 hacker@piping~named-pipes:~$ /challenge/run > /tmp/flag_fifo
-You're successfully redirecting /challenge/run to a FIFO at /tmp/flag_fifo!
-Bash will now try to open the FIFO for writing, to pass it as the stdout of
-/challenge/run. Recall that operations on FIFOs will *block* until both the
-read side and the write side is open, so /challenge/run will not actually be
+You're successfully redirecting /challenge/run to a FIFO at /tmp/flag_fifo! 
+Bash will now try to open the FIFO for writing, to pass it as the stdout of 
+/challenge/run. Recall that operations on FIFOs will *block* until both the 
+read side and the write side is open, so /challenge/run will not actually be 
 launched until you start reading from the FIFO!
-hacker@piping~named-pipes:~$
 
 
 terminal 2
 
 
 hacker@piping~named-pipes:~$ cat /tmp/flag_fifo
-You've correctly redirected /challenge/run's stdout to a FIFO at
+You've correctly redirected /challenge/run's stdout to a FIFO at 
 /tmp/flag_fifo! Here is your flag:
-pwn.college{cH_kVX0aL5Hh-leIQHU0ZHvzGWB.01MzMDOxwiM1kjNzEzW}
-
+pwn.college{gami27lwEKqoxeE92E1u_Kx8X_2.01MzMDOxwCMxEzNzEzW}
 ````
 
 
