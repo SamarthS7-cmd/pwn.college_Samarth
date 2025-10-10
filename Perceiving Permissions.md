@@ -68,7 +68,7 @@ pwn.college{Ah8_hO1etgxpekVjFt910ux1SlI.QXycjM1wCMxEzNzEzW}
 
 ```
 
-
+So first I used id command to list out all the ids then changed ownership of grp15480 and finally used cat to get the flag.
 
 ````
 hacker@permissions~fun-with-groups-names:~$ id
@@ -80,6 +80,104 @@ pwn.college{Ah8_hO1etgxpekVjFt910ux1SlI.QXycjM1wCMxEzNzEzW}
 
 
 ## What I learnt
+Practice problem so nothing new was learnt.
 
 ## References 
 No reference was used for this challenge.
+
+
+
+
+# 4. Changing Permissions :
+
+In this challenge we must change the permissions of the /flag file to read it.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{4JXN2nRbNbf5T_w8FIUIyCSH35H.QXzcjM1wCMxEzNzEzW}
+
+```
+
+I wrote chmod u+r which gave read access to the user's permissions, then we can read the flag
+
+````
+hacker@permissions~changing-permissions:~$ chmod go-u+r /flag
+hacker@permissions~changing-permissions:~$ cat /flag
+pwn.college{4JXN2nRbNbf5T_w8FIUIyCSH35H.QXzcjM1wCMxEzNzEzW}
+````
+
+
+## What I learnt
+I learnt about chmod or change mode which helps in changing file permissions with a mode format of WHO+/-WHAT, where WHO is user/group/other and WHAT is read/write/execute.
+
+## References 
+No reference was used for this challenge.
+
+
+
+# 5. Executable Files :
+
+In this challenge we must make /challenge/run executable to get the flag
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{ExmEeYphQc4MKZKu-P-bORdsusR.QXyEjN0wCMxEzNzEzW}
+
+```
+
+In order to make the file executable I wrote chmod u+x and then ran /challenge/run to get the flag.
+
+````
+hacker@permissions~executable-files:~$ chmod u+x /challenge/run
+hacker@permissions~executable-files:~$ /challenge/run
+Successful execution! Here is your flag:
+pwn.college{ExmEeYphQc4MKZKu-P-bORdsusR.QXyEjN0wCMxEzNzEzW}
+````
+
+
+## What I learnt
+I learnt how the various arguments are used with the chmod command for eg: u+r adds read access to the user's permissions g+wx adds write and execute access to the group's permissions o-w removes write access for other users a-rwx removes all permissions for the user, group, and world.
+
+## References 
+No reference was used for this challenge.
+
+
+
+
+# 8. The SUID Bit :
+
+In this challenge we have to add the SUID bit to the /challenge/getroot program in order to spawn a root shell to get the flag.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{AL5wrbXH7QZzgDP6gkHQrxF2EIO.QXzEjN0wCMxEzNzEzW}
+
+```
+
+ given in the challenge we need to add the SUID bit to /challenge/getroot. We can do this by using chmod u+s command.
+
+````
+hacker@permissions~the-suid-bit:~$ chmod u+s /challenge/getroot
+hacker@permissions~the-suid-bit:~$ /challenge/getroot
+SUCCESS! You have set the suid bit on this program, and it is running as root! 
+Here is your shell...
+root@permissions~the-suid-bit:~# cat /flag
+pwn.college{AL5wrbXH7QZzgDP6gkHQrxF2EIO.QXzEjN0wCMxEzNzEzW}
+````
+
+
+## What I learnt
+I learnt about the SUID bit which stands for "Set User ID". SUID allows the user to run a program as the owner of that program's file.
+
+## References 
+No reference was used for this challenge.
+
