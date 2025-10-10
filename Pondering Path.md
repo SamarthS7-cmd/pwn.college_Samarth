@@ -114,31 +114,26 @@ In this challenge, we have to make a shell script called win add its location to
 **Flag** :
 
 ```
-pwn.college{0xw-_expZcK7UZABaA_BNOxTNx2.QX2cjM1wyM3gjNzEzW}
+pwn.college{swFRUvZ5JqewMJQy9x06V7I4rrA.QX2cjM1wCMxEzNzEzW}
 ```
 
-As per the challenge, I first did nano win and wrote the script. Then did chmod 777 win to make it read. Then I put PATH=/home/hacker and ran /challenge/run to get the flag.
-````
+As per the challenge, I first created nano win and added 
 !#/bin/bash
-read flag < /flag
-echo "$flag"
-
-
-hacker@path~adding-commands:~$ pwd
-/home/hacker
-hacker@path~adding-commands:~$ nano win
+read flag < /flag 
+echo "$flag". 
+Then did chmod 777 win to make it read. Then I put PATH=/home/hacker and ran /challenge/run to get the flag.
+````
 hacker@path~adding-commands:~$ nano win
 hacker@path~adding-commands:~$ cat win
 !#/bin/bash
-read flag < /flag
+read flag < /flag 
 echo "$flag"
 hacker@path~adding-commands:~$ chmod 777 win
 hacker@path~adding-commands:~$ PATH=/home/hacker
 hacker@path~adding-commands:~$ /challenge/run
 Invoking 'win'....
 /home/hacker/win: line 1: !#/bin/bash: No such file or directory
-pwn.college{0xw-_expZcK7UZABaA_BNOxTNx2.QX2cjM1wyM3gjNzEzW}
-hacker@path~adding-commands:~$
+pwn.college{swFRUvZ5JqewMJQy9x06V7I4rrA.QX2cjM1wCMxEzNzEzW}
 ````
 
 
