@@ -284,8 +284,104 @@ I learnt about the -a command which lets me list out the files which are dot pre
 ## References 
 No reference was used for this challenge.
 
+# 11. AN EPIC FILESYSTEM QUEST :
 
-# 11. MAKING DIRECTORIES :
+
+In this challenge we have to use our knowledge of previous modules and practice problems to find the flag using given clues : 0.Your first clue is in /. Head on over there. 1.Look around with ls. There'll be a file named HINT or CLUE or something along those lines! 2.cat that file to read the clue! 3.Depending on what the clue says, head on over to the next directory (or don't!). 4.Follow the clues to the flag.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{soEP51DJx52ThAf7D7mn-c3QG3n.QX5IDO0wCMxEzNzEzW}
+
+```
+
+We had to just follow the clues given and play with cd ls and cat.
+
+````
+hacker@commands~an-epic-filesystem-quest:~$ cd /
+hacker@commands~an-epic-filesystem-quest:/$ ls
+MEMO  bin  boot  challenge  dev  etc  flag  home  lib  lib32  lib64  libx32  media  mnt  nix  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+hacker@commands~an-epic-filesystem-quest:/$ cat MEMO
+Yahaha, you found me!
+The next clue is in: /opt/linux/linux-5.4/drivers/net/team
+
+Watch out! The next clue is **trapped**. You'll need to read it out without 'cd'ing into the directory; otherwise, the clue will self destruct!
+hacker@commands~an-epic-filesystem-quest:/$ cat /opt/linux/linux-5.4/drivers/net/team/TIP-TRAPPED
+Congratulations, you found the clue!
+The next clue is in: /usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info
+
+The next clue is **hidden** --- its filename starts with a '.' character. You'll need to look for it using special options to 'ls'.
+hacker@commands~an-epic-filesystem-quest:/$ cd /usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info
+hacker@commands~an-epic-filesystem-quest:/usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info$ ls
+INSTALLER  LICENSE  METADATA  RECORD  WHEEL  top_level.txt
+hacker@commands~an-epic-filesystem-quest:/usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info$ ls -a
+.  ..  .NOTE  INSTALLER  LICENSE  METADATA  RECORD  WHEEL  top_level.txt
+hacker@commands~an-epic-filesystem-quest:/usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info$ cat .NOTE
+Great sleuthing!
+The next clue is in: /usr/share/X11/locale/km_KH.UTF-8
+
+The next clue is **delayed** --- it will not become readable until you enter the directory with 'cd'.
+hacker@commands~an-epic-filesystem-quest:/usr/local/lib/python3.8/dist-packages/cachetools-5.5.2.dist-info$ cd  /usr/share/X11/locale/km_KH.UTF-8
+hacker@commands~an-epic-filesystem-quest:/usr/share/X11/locale/km_KH.UTF-8$ ls
+Compose  SPOILER  XI18N_OBJS  XLC_LOCALE
+hacker@commands~an-epic-filesystem-quest:/usr/share/X11/locale/km_KH.UTF-8$ cat SPOILER
+Tubular find!
+The next clue is in: /usr/share/bug/libgl1
+
+The next clue is **hidden** --- its filename starts with a '.' character. You'll need to look for it using special options to 'ls'.
+hacker@commands~an-epic-filesystem-quest:/usr/share/X11/locale/km_KH.UTF-8$ cd /usr/share/bug/libgl1
+hacker@commands~an-epic-filesystem-quest:/usr/share/bug/libgl1$ ls -a
+.  ..  .CLUE  control
+hacker@commands~an-epic-filesystem-quest:/usr/share/bug/libgl1$ cat .CLUE
+Great sleuthing!
+The next clue is in: /opt/linux/linux-5.4/scripts/kconfig/tests/err_recursive_dep
+hacker@commands~an-epic-filesystem-quest:/usr/share/bug/libgl1$ cd /opt/linux/linux-5.4/scripts/kconfig/tests/err_recursive_dep
+hacker@commands~an-epic-filesystem-quest:/opt/linux/linux-5.4/scripts/kconfig/tests/err_recursive_dep$ ls
+Kconfig  SECRET  __init__.py  expected_stderr
+hacker@commands~an-epic-filesystem-quest:/opt/linux/linux-5.4/scripts/kconfig/tests/err_recursive_dep$ cat SECRET
+Tubular find!
+The next clue is in: /usr/lib/python3/dist-packages/urllib3-1.25.8.egg-info
+
+The next clue is **delayed** --- it will not become readable until you enter the directory with 'cd'.
+hacker@commands~an-epic-filesystem-quest:/opt/linux/linux-5.4/scripts/kconfig/tests/err_recursive_dep$ cd /usr/lib/python3/dist-packages/urllib3-1.25.8.egg-info
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/urllib3-1.25.8.egg-info$ ls
+PKG-INFO  WHISPER  dependency_links.txt  requires.txt  top_level.txt
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/urllib3-1.25.8.egg-info$ cat WHISPER
+Lucky listing!
+The next clue is in: /usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__
+
+The next clue is **hidden** --- its filename starts with a '.' character. You'll need to look for it using special options to 'ls'.
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/urllib3-1.25.8.egg-info$ cd /usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__$ ls
+__init__.cpython-38.pyc       cartan_type.cpython-38.pyc     root_system.cpython-38.pyc  type_b.cpython-38.pyc  type_d.cpython-38.pyc  type_f.cpython-38.pyc  weyl_group.cpython-38.pyc
+cartan_matrix.cpython-38.pyc  dynkin_diagram.cpython-38.pyc  type_a.cpython-38.pyc       type_c.cpython-38.pyc  type_e.cpython-38.pyc  type_g.cpython-38.pyc
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__$ ls -a
+.   .README                  cartan_matrix.cpython-38.pyc  dynkin_diagram.cpython-38.pyc  type_a.cpython-38.pyc  type_c.cpython-38.pyc  type_e.cpython-38.pyc  type_g.cpython-38.pyc
+..  __init__.cpython-38.pyc  cartan_type.cpython-38.pyc    root_system.cpython-38.pyc     type_b.cpython-38.pyc  type_d.cpython-38.pyc  type_f.cpython-38.pyc  weyl_group.cpython-38.pyc
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__$ cat .README
+Great sleuthing!
+The next clue is in: /usr/share/racket/pkgs/scheme-lib/scheme/exists/lang/compiled
+
+Watch out! The next clue is **trapped**. You'll need to read it out without 'cd'ing into the directory; otherwise, the clue will self destruct!
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__$ ls /usr/share/racket/pkgs/scheme-lib/scheme/exists/lang/compiled
+BRIEF-TRAPPED  reader_rkt.dep  reader_rkt.zo
+hacker@commands~an-epic-filesystem-quest:/usr/lib/python3/dist-packages/sympy/liealgebras/__pycache__$ cat /usr/share/racket/pkgs/scheme-lib/scheme/exists/lang/compiled/BRIEF-TRAPPED
+CONGRATULATIONS! Your perserverence has paid off, and you have found the flag!
+It is: pwn.college{soEP51DJx52ThAf7D7mn-c3QG3n.QX5IDO0wCMxEzNzEzW}
+
+````
+
+
+## What I learnt
+This challenge helped me improve my skills in searching for files.
+## References 
+No reference was used for this challenge.
+
+
+# 12. MAKING DIRECTORIES :
 
 
 In this challenge, we have to create a /tmp/pwn directory and make a college file in it. Then run /challenge/run, which will check your solution and give the flag.
@@ -317,7 +413,7 @@ I learnt about the mkdir command which is used to create directories and is the 
 No reference was used for this challenge.
 
 
-# 12. FINDING FILES :
+# 13. FINDING FILES :
 
 
 In this challege we have to find the hidden flag which is in a random directory on the filesystem.
@@ -396,7 +492,7 @@ I learnt about the find command. The find command takes optional arguments descr
 No reference was used for this challenge.
 
 
-# 13. LINKING FILES :
+# 14. LINKING FILES :
 
 
 In this challenge, the flag is in /flag, but /challenge/catflag will instead read out /home/hacker/not-the-flag. We have to use the symlink, and fool it into giving the flag.
