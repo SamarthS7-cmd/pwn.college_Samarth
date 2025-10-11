@@ -361,7 +361,7 @@ Through this challenge, I learnt about -v which is used when we want to show lin
 No reference was used for this challenge.
 
 
-# 10. DUPLICATING FILE DATA WITH TEE:
+# 10. DUPLICATING PIPED DATA WITH TEE:
 
 
 In this challenge /challenge/pwn must be piped into /challenge/college, but we'll need to intercept the data to see what pwn needs from us.
@@ -371,18 +371,25 @@ In this challenge /challenge/pwn must be piped into /challenge/college, but we'l
 **Flag** :
 
 ```
-pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+pwn.college{8kT5GeZCyWBXBTE0Xa7MmvSvs8Y.QXxITO0wCMxEzNzEzW}
 ```
-An easy challenge where we had to just -v function.
+As the challenge suggests we have to first intercept the data from pwn so I did cat pwn and got the secret_arg as 8kT5GeZC which needed to be used. Then I piped /challenge/pwn into /challenge/college by writing /challenge/pwn --secret 8kT5GeZC | /challenge/college and got the flag
 
 ````
-hacker@piping~filtering-with-grep-v:~$ /challenge/run | grep -v DECOY
-pwn.college{sEHo8jIXyLSgNsmLnHn1L8_4Huf.0FOxEzNxwCMxEzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ cat pwn
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "8kT5GeZC"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret 8kT5GeZC | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{8kT5GeZCyWBXBTE0Xa7MmvSvs8Y.QXxITO0wCMxEzNzEzW}
 ````
 
 
 ## What I learnt
-Through this challenge, I learnt about -v which is used when we want to show lines that do not match a pattern.
+Through this challenge, I learnt about the tee command, named after a "T-splitter" from plumbing pipes and it performs the function of duplicating data flowing through the pipes to any number of files provided on the command line.
 
 ## References 
 No reference was used for this challenge.
