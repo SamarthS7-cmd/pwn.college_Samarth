@@ -254,7 +254,7 @@ No reference was used for this challenge.
 # 10. HIDDEN FILES :
 
 
-In this challenge, we have to move the /flag file into /tmp/hack-the-planet and run /challenge/check, which will check things out and give the flag.
+In this challenge, we have to find the flag, hidden as a dot-prepended file in /.
 
 ## MY SOLUTION:
 
