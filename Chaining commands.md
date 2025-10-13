@@ -52,7 +52,7 @@ Nice chaining! Flag: pwn.college{ox9yt4Zy8raIICS3qxNIRXbXzgY.0lM0MDOxwCMxEzNzEzW
 
 
 ## What I learnt
-I learnt how we can use && to join two commands.
+I learnt how we can use && to join two commands and it runs the second command only if the first command succeeds.
 ## References 
 No reference was used for this challenge.
 
