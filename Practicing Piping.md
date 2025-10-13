@@ -127,7 +127,7 @@ mode!
 
 
 ## What I learnt
-Through this challenge, I learnt that we can redirect input in append mode using >> which will append in the same file.
+Through this challenge, I learnt that we can redirect input in append mode using >> which will append in the same file. > creates a new file everytime we redirect the output which is not the case with >>
 
 ## References 
 No reference was used for this challenge.
