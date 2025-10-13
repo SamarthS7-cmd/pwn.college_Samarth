@@ -395,7 +395,7 @@ pwn.college{sDaO_bIyEaBPxXL-scf3t5g_eex.QXwEjN0wCMxEzNzEzW}
 I learnt about octal notations and how we can use them to change file permissions.
 
 ## References 
-No reference was used for this challenge.
+https://www.youtube.com/watch?v=TGETBkHzsaA
 
 
 
