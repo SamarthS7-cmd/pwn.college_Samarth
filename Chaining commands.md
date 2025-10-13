@@ -81,7 +81,7 @@ Nice chaining! Flag: pwn.college{MszAGQ6L_nVOIAcAIK69NH-0_DX.01M0MDOxwCMxEzNzEzW
 
 
 ## What I learnt
-I learnt how we can use || to join two commands.
+I learnt how we can use || to join two commands and this runs the second command only when the first command fails.
 ## References 
 No reference was used for this challenge.
 
@@ -111,7 +111,7 @@ pwn.college{gsYrKQ3JVCwedk11hkJffng0CIs.QXxcDO0wCMxEzNzEzW}
 
 
 ## What I learnt
-I learnt about shell scripts and how we can put commands into a file. I also learnt about nano text editor.
+I learnt about shell scripts and how we can put commands into a file. A shell script is a file containing a series of commands for the shell to execute. The shell itself is a command-line interpreter (CLI), while a shell script is a saved list of instructions .
 ## References 
 No reference was used for this challenge.
 
@@ -429,6 +429,6 @@ pwn.college{46FKCHWxpY0LamjIGf0J5W3-9nA.0lMwgDOxwCMxEzNzEzW}
 
 
 ## What I learnt
-Through this challenge, I was able to read how we can read shell scripts.
+Through this challenge, I was able to understand how we can read shell scripts.
 ## References 
 No reference was used for this challenge.
